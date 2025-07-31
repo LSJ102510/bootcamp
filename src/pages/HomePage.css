@@ -1,0 +1,15 @@
+h1 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(165, 196, 126);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    margin: 0px;
+    width : 100vw;
+}
+
+#details {
+    float : left;
+}
