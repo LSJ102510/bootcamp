@@ -19,6 +19,22 @@ api.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+// ✅ 토큰 관리 유틸리티 추가
+// src/api/auth.js
+
+export const tokenManager = {
+  saveTokens: (accessToken, refreshToken) => {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  },
+  getAccessToken: () => localStorage.getItem('accessToken'),
+  clearTokens: () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    delete axios.defaults.headers.common['Authorization'];
+  },
+};
 
 // 이메일 로그인 - api 인스턴스 사용하도록 수정
 export const loginWithEmail = (data) =>
@@ -44,12 +60,25 @@ export const logout = () => {
 
 // 카카오 로그인 (리디렉션 방식)
 export const loginWithKakao = () => {
-  const kakaoAuthUrl = 'http://auth.junhwan.me/oauth2/authorization/kakao';
+  const kakaoAuthUrl = 'http://auth.junhwan.me/oauth2/authorization/kakao?prompt=login';
   window.location.href = kakaoAuthUrl;
 };
 
 // src/api/auth.js (예시)
-export const fetchMyInfo = () => {
-  return api.get('/api/user/me'); // 토큰이 자동 첨부됨
-};
+export const handleOAuth2Redirect = (location, navigate) => {
+  const urlParams = new URLSearchParams(location.search);
+  const accessToken = urlParams.get('accessToken');
+  const refreshToken = urlParams.get('refreshToken');
+  const message = urlParams.get('message');
 
+  if (accessToken && refreshToken) {
+    tokenManager.saveTokens(accessToken, refreshToken); // ✅ 저장
+    navigate('/home', { replace: true });
+
+    if (message === 'login_success') {
+      return { success: true, message: '카카오 로그인 성공!' };
+    }
+  }
+
+  return null;
+};

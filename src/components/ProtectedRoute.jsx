@@ -1,31 +1,26 @@
-// src/components/ProtectedRoute.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { fetchMyInfo } from '../api/auth';
 
 const ProtectedRoute = ({ children }) => {
   const [checking, setChecking] = useState(true);
   const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ location 훅 추가
+  const location = useLocation();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        await fetchMyInfo(); // accessToken 유효한지 확인
-        setIsValid(true);
-      } catch (error) {
-        setIsValid(false);
-        if (location.pathname !== '/email-login') {
-          alert('잘못된 접근입니다. 로그인 후 이용해주세요.');
-          navigate('/email-login', { replace: true });
-        }
-      } finally {
-        setChecking(false);
-      }
-    };
+    const token = localStorage.getItem('accessToken');
 
-    checkAuth();
+    if (token) {
+      setIsValid(true); // 토큰 있으면 통과
+    } else {
+      setIsValid(false);
+      if (location.pathname !== '/login') {
+        alert('로그인 후 이용해주세요.');
+        navigate('/login', { replace: true });
+      }
+    }
+
+    setChecking(false);
   }, [navigate, location]);
 
   if (checking) return null;

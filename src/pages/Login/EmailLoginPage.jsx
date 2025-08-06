@@ -19,7 +19,7 @@ const EmailLoginPage = () => {
     navigate('/home');
   },
   onError: () => {
-    alert('잘못된 비밀번호입니다');
+    alert('이메일이 등록되지 않았거나 잘못된 비밀번호입니다');
   },
 });;
 
