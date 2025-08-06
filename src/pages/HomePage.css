@@ -1,15 +1,48 @@
-h1 {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(165, 196, 126);
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0px;
-    margin: 0px;
-    width : 100vw;
+.mypage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+
 }
 
-#details {
-    float : left;
+.mypage-box {
+  width: 100%;
+  max-width: 360px;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mypage-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #3d3dff;
+  margin-bottom: 10px;
+}
+
+/* 버튼 공통 스타일 */
+.mypage-box button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+/* 프로필 보기 버튼 */
+.profile-btn {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+  background-color: #3d3dff;
+  color: white;
+  border:none;
 }

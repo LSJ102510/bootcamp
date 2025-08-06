@@ -1,0 +1,80 @@
+.email-step2-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fcfcfc;
+}
+
+.email-step2-box {
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 360px;
+  text-align: center;
+}
+
+.email-step2-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #3d3dff;
+  margin-bottom: 8px;
+}
+
+.email-step2-subtitle {
+  font-size: 16px;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  color: #444;
+}
+
+.email-step2-input {
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 92%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.email-step2-btn {
+  background-color: #3d3dff;
+  color: white;
+  font-size: 14px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 0px;
+  width: 100%;
+  height: 40%;
+  margin-top: 10px;
+}
+
+.password-rules {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  text-align: left;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.password-rules p {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.password-rules ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.password-rules li {
+  line-height: 1.6;
+}
